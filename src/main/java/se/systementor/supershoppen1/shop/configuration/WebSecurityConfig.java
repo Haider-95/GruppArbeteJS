@@ -22,24 +22,13 @@ public class WebSecurityConfig  {
     private ShopUserDetailsService userDetailsService;
 
 
-
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth,PasswordEncoder passwordEncoder) 
       throws Exception {
         auth
         .userDetailsService(userDetailsService)
         .passwordEncoder(passwordEncoder);
-        //   .inMemoryAuthentication()
-        //   .passwordEncoder(passwordEncoder)
-        //   .withUser("user@user.se")
-        //   .password(passwordEncoder.encode("stefan"))
-        //   .roles("USER")
-        //   .and()
-        //   .withUser("admin@user.se")
-        //   .password(passwordEncoder.encode("stefan"))
-        //   .roles("ADMIN");
     }
-    
 
 
     @Bean
@@ -68,17 +57,10 @@ public class WebSecurityConfig  {
                         .logoutSuccessUrl("/login")
                         .permitAll()
                 );
-
-
         return http.build(); 
     }
-
 
     public WebSecurityConfig() {
         super();
     }
-
-
-
-
 }
